@@ -6,13 +6,13 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      vatRate: 0,
+      vatRate: 25,
       incVat: 0,
       exVat: 0
     }
   }
 
-  handleincVatChange = (event) => {
+  handleIncVatChange = (event) => {
     console.log("Number changed!", event.target.value)
     this.setState({
       incVat: parseInt(event.target.value, 10),
@@ -20,7 +20,7 @@ class App extends React.Component {
     })
   }
 
-  handleexVatChange = (event) => {
+  handleExVatChange = (event) => {
     console.log("Number changed!", event.target.value)
     this.setState({
       exVat: parseInt(event.target.value, 10),
@@ -32,7 +32,7 @@ class App extends React.Component {
     console.log("Number changed!", changeEvent.target.value)
     this.setState({
       vatRate: (changeEvent.target.value),
-      exVat: incVatToExtVat(changeEvent.target.value, parseInt(this.state.incVat, 10)),
+      exVat: incVatToExtVat(changeEvent.target.value),
       incVat: exVatToIncVat(changeEvent.target.value, parseInt(this.state.exVat, 10))
     })
   }
@@ -82,12 +82,12 @@ class App extends React.Component {
             <input
               type="number"
               value={this.state.incVat}
-              onChange={this.handleincVatChange} />
+              onChange={this.handleIncVatChange} />
             <label>Exklusive moms</label>
             <input
               type="number"
               value={this.state.exVat}
-              onChange={this.handleexVatChange} />
+              onChange={this.handleExVatChange} />
           </div>
 
         </form>
